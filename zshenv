@@ -22,8 +22,6 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 # GTK2 open GUI lib
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
-# x11 authority file
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
 # CURSOR
 export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons
