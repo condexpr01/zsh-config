@@ -39,3 +39,6 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 #export GLFW_IM_MODULE=ibus
 #export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
+
+# KDE sudo askpass
+export SUDO_ASKPASS=/usr/bin/ksshaskpass
