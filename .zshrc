@@ -71,6 +71,8 @@ alias ls="ls --block-size=M --color --all"
 alias du="du --block-size=M --max-depth=1 -h"
 alias df="df --block-size=M -h"
 
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
+
 # nvidia-settings的设置目录
 alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings
 

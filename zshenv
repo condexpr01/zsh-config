@@ -34,11 +34,23 @@ export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 # CUDA
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
+#fcitx5
 #export XMODIFIERS=@im=fcitx
 #export GTK_IM_MODULE=fcitx
 #export GLFW_IM_MODULE=ibus
 #export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 
+#adb
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+
+#dotnet
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+
+#nuget
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+
 # KDE sudo askpass
 export SUDO_ASKPASS=/usr/bin/ksshaskpass
+
+
