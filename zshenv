@@ -53,4 +53,7 @@ export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 # KDE sudo askpass
 export SUDO_ASKPASS=/usr/bin/ksshaskpass
 
+# yay use git cli
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
+
 
