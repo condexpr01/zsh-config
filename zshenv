@@ -56,4 +56,6 @@ export SUDO_ASKPASS=/usr/bin/ksshaskpass
 # yay use git cli
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
+# CARGO
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
