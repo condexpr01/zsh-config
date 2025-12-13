@@ -72,10 +72,13 @@ alias du="du --block-size=M --max-depth=1 -h"
 alias df="df --block-size=M -h"
 
 alias adb='HOME="$XDG_DATA_HOME"/android adb'
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
+
 
 # nvidia-settings的设置目录
-alias nvidia-settings=nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings
+alias nvidia-settings="nvidia-settings --config=${XDG_CONFIG_HOME}/nvidia/settings"
 
+# neovim
 function vi(){nvim-qt --fullscreen "$@"}
 function nv(){nvim-qt --fullscreen "$@"}
 function vim(){nvim-qt --fullscreen "$@"}

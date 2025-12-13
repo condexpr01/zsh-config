@@ -35,11 +35,14 @@ export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 #fcitx5
-export XMODIFIERS=@im=fcitx
-export GLFW_IM_MODULE=ibus
-export SDL_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx # XWayland apps
+export QT_IM_MODULES="wayland;fcitx;ibus"
 #export GTK_IM_MODULE=fcitx
 #export QT_IM_MODULE=fcitx
+#export SDL_IM_MODULE=fcitx
+
+#wine
+export WINEPREFIX="$XDG_DATA_HOME"/wine
 
 #adb
 export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
@@ -58,4 +61,12 @@ export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 # CARGO
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+# DOTNET
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+
+# Java preferences and JavaFX cache
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java -Djavafx.cachedir=${XDG_CACHE_HOME}/openjfx"
+
+
 
