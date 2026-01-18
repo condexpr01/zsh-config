@@ -62,7 +62,6 @@ zle_highlight=(region:bg=#39c5bb,fg=#ffffff)
 
 #zsh bindkey vi mode
 bindkey -v '^?' backward-delete-char #backspace repair
-bindkey -M vicmd ":" edit-command-line
 
 
 # alias
