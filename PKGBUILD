@@ -25,7 +25,7 @@ prefix=${PREFIX:-/usr}
 
 package() {
 	local config_home=${XDG_CONFIG_HOME}/zsh
-	[[ -d $config_home ]] || config_home=$HOME
+	[[ -d $XDG_CONFIG_HOME ]] || config_home=$HOME
 
 	pandoc -s -t man "$srcdir/readme.md" -o "$srcdir/readme.1"
 	gzip -9c "$srcdir/readme.1" > "$srcdir/${pkgname}.gz"
