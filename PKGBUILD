@@ -19,7 +19,7 @@ source=('readme.md'
 		'.zshrc'
 		'tmux.conf'
 		'zshenv'
-		'git+ssh://git@github.com/romkatv/powerlevel10k.git')
+		'git+https://github.com/romkatv/powerlevel10k.git')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prefix=${PREFIX:-/usr}
