@@ -1,4 +1,9 @@
 
+################
+# ZSH: ZDOTDIR #
+################
+export ZDOTDIR=${PREFIX:-/usr}/share/zsh-config
+
 # XDG
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -12,9 +17,6 @@ export LC_ALL=en_US.utf-8
 # editor
 export EDITOR="nvim"
 export VISUAL="nvim-qt"
-
-# ZSH
-export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 
 # Gnu privacy guard
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg

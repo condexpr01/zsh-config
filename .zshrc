@@ -1,12 +1,12 @@
 
-#tmux要在p10k-instant-prompt前
+#tmux要在p10k前
 if [ -z "$TMUX" ];then
 	# tmux(有启动就连上session，没有就建立session)
 	tmux attach -t session || tmux new -s session
 fi
 
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ${PREFIX:-/usr}/share/zsh-config/.p10k.zsh
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -14,10 +14,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # powerlevel10k
-source "$XDG_CONFIG_HOME"/zsh/powerlevel10k/powerlevel10k.zsh-theme
+source ${PREFIX:-/usr}/share/zsh-config/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ${PREFIX:-/usr}/share/zsh-config/.p10k.zsh
+[[ ! -f ${PREFIX:-/usr}/share/zsh-config/.p10k.zsh ]] || source ${PREFIX:-/usr}/share/zsh-config/.p10k.zsh
 
 
 
