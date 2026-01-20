@@ -2,14 +2,17 @@
 # zsh config
 
 * zshenv
+
 > 配置`ZDOTDIR`,`XDG_CONFIG_HOME`,`XDG_CACHE_HOME`,`XDG_DATA_HOME`,`XDG_STATE_HOME`,    
 > 以及设置默认编辑器和一些环境变量    
 
 * zshrc
+
 > 开启补全,开启vi键位模式,模仿vi光标
 
 
 # tmux config
+
 > 模仿vi键位
 
 ```txt
@@ -20,6 +23,7 @@
 ```
 
 # theme
+
 > p10k: [romkatv/powerlevel10k.git](https://github.com/romkatv/powerlevel10k.git)
 
 
