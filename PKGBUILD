@@ -8,7 +8,7 @@ pkgdesc='zsh&tmux configure'
 arch=('any')
 url='https://github.com/condexpr01/zsh-config'
 
-license=('unlicense')
+license=('MIT')
 
 #depends=()
 #makedepends=('pandoc' 'gzip' 'tmux' 'zsh')
