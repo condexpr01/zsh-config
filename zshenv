@@ -16,7 +16,7 @@ export LC_ALL=en_US.utf-8
 
 # editor
 export EDITOR="nvim"
-export VISUAL="nvim-qt"
+export VISUAL="neovide"
 
 # Gnu privacy guard
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg

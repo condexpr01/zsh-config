@@ -78,9 +78,9 @@ alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias nvidia-settings="nvidia-settings --config=${XDG_CONFIG_HOME}/nvidia/settings"
 
 # neovim
-function vi(){nvim-qt --fullscreen "$@"}
-function nv(){nvim-qt --fullscreen "$@"}
-function vim(){nvim-qt --fullscreen "$@"}
+function vi(){neovide --title-hidden --maximized "$@"}
+function nv(){neovide --title-hidden --maximized "$@"}
+function vim(){neovide --title-hidden --maximized "$@"}
 
 function tmux-help() {
 
