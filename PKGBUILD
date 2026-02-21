@@ -44,6 +44,6 @@ package() {
 	install -Dm644 "$srcdir/tmux.conf" "$pkgdir$config_home/tmux/tmux.conf"
 
 	install -dm755 "$pkgdir$config_home/powerlevel10k"
-	cp -r "$srcdir/powerlevel10k/"* "$pkgdir$config_home/powerlevel10k/"
+	mv "$srcdir/powerlevel10k/"* "$pkgdir$config_home/powerlevel10k/"
 }
 
