@@ -77,10 +77,27 @@ alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 # nvidia-settings的设置目录
 alias nvidia-settings="nvidia-settings --config=${XDG_CONFIG_HOME}/nvidia/settings"
 
+
+
 # neovim
-function vi(){neovide --title-hidden --maximized "$@"}
-function nv(){neovide --title-hidden --maximized "$@"}
-function vim(){neovide --title-hidden --maximized "$@"}
+function neovim_name(){
+
+	if ! command -v vi > /dev/null 2>&1; then
+		target=${PREFIX:-/usr}/bin/local/vi
+		sudo tee "${target}" << 'EOF'
+#/bin/sh
+neovide --title-hidden --maximized "$@"
+EOF
+		sudo chmod +x ${target}
+	fi
+
+	echo "create: ${target}"
+}
+
+neovim_name nv
+neovim_name vi
+neovim_name vim
+
 
 function tmux-help() {
 
