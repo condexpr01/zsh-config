@@ -79,24 +79,16 @@ alias nvidia-settings="nvidia-settings --config=${XDG_CONFIG_HOME}/nvidia/settin
 
 
 
-# neovim
-function neovim_name(){
-
-	if ! command -v vi >/dev/null 2>&1; then
-		target=${PREFIX:-/usr}/local/bin/${1}
-		sudo tee "${target}" >/dev/null 2>&1 << 'EOF' 
+# neovim(neovide) -> nv
+if ! command -v nv >/dev/null 2>&1; then
+	target=${PREFIX:-/usr}/local/bin/nv
+	sudo tee "${target}" >/dev/null 2>&1 << 'EOF' 
 #/bin/sh
 neovide --title-hidden --maximized "$@"
 EOF
-		sudo chmod +x ${target}
-	fi
-
+	sudo chmod +x ${target}
 	echo "create: ${target}"
-}
-
-neovim_name nv
-neovim_name vi
-neovim_name vim
+fi
 
 
 function tmux-help() {
