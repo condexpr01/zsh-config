@@ -83,7 +83,7 @@ alias nvidia-settings="nvidia-settings --config=${XDG_CONFIG_HOME}/nvidia/settin
 function neovim_name(){
 
 	if ! command -v vi >/dev/null 2>&1; then
-		target=${PREFIX:-/usr}/local/bin/vi
+		target=${PREFIX:-/usr}/local/bin/${1}
 		sudo tee "${target}" >/dev/null 2>&1 << 'EOF' 
 #/bin/sh
 neovide --title-hidden --maximized "$@"
