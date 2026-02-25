@@ -16,10 +16,10 @@
 > 模仿vi键位
 
 ```txt
-	prefix:  <Ctrl-b>
+prefix:  <Ctrl-b>
 
-	panes:   split: s / v move: h j k l exit:  q
-	windows: close: c     new: n / w    select: 0-9
+panes:   split: s / v move: h j k l exit:  q
+windows: close: c     new: n / w    select: 0-9
 ```
 
 # theme
