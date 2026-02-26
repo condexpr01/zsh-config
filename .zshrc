@@ -78,19 +78,6 @@ alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias nvidia-settings="nvidia-settings --config=${XDG_CONFIG_HOME}/nvidia/settings"
 
 
-
-# neovim(neovide) -> nv
-if ! command -v nv >/dev/null 2>&1; then
-	target=${PREFIX:-/usr}/local/bin/nv
-	sudo tee "${target}" >/dev/null 2>&1 << 'EOF' 
-#/bin/sh
-neovide --title-hidden --maximized "$@"
-EOF
-	sudo chmod +x ${target}
-	echo "create: ${target}"
-fi
-
-
 function tmux-help() {
 
 	local R="\e[31m"        # Red
