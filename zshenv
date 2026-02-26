@@ -2,6 +2,7 @@
 ################
 # ZSH: ZDOTDIR #
 ################
+emulate sh -c 'source /etc/profile'
 export ZDOTDIR=${PREFIX:-/usr}/share/zsh-config
 
 # XDG
