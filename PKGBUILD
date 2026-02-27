@@ -18,9 +18,8 @@ source=('readme.md'
 		'.p10k.zsh'
 		'.zshrc'
 		'tmux.conf'
-		'zshenv'
-		'git+https://github.com/romkatv/powerlevel10k.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+		'zshenv')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prefix=${PREFIX:-/usr}
 
@@ -41,7 +40,11 @@ package() {
 	# grep hardcoded zshenv path from zsh binary, or default to ${pkgdir}${PREFIX}/etc/zsh/zshenv
 	local zshenvpath="$(strings $(which zsh) | grep -P "(/.*/etc.*/zshenv|/etc.*/zshenv)" | head --lines=1)"
 
-	[ -z "$zshenvpath" ] && zshenvpath="${pkgdir}${PREFIX}/etc/zsh/zshenv"
+	if [ -z "$zshenvpath" ];then
+		zshenvpath="${pkgdir}${PREFIX}/etc/zsh/zshenv"
+	else
+		zshenvpath="${pkgdir}${PREFIX}${zshenvpath}"
+	fi
 
 	install -Dm644 "$srcdir/zshenv" "${zshenvpath}"
 
