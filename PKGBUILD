@@ -18,8 +18,9 @@ source=('readme.md'
 		'.p10k.zsh'
 		'.zshrc'
 		'tmux.conf'
-		'zshenv')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+		'zshenv'
+		'git+https://github.com/romkatv/powerlevel10k.git')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prefix=${PREFIX:-/usr}
 
@@ -50,7 +51,8 @@ package() {
 
 	install -Dm644 "$srcdir/.p10k.zsh" "$pkgdir$config_home/.p10k.zsh"
 	install -Dm644 "$srcdir/.zshrc" "$pkgdir$config_home/.zshrc"
-	install -Dm644 "$srcdir/tmux.conf" "$pkgdir$config_home/tmux/tmux.conf"
+
+	install -Dm644 "$srcdir/tmux.conf" "$pkgdir$prefix/../etc/tmux/tmux.conf"
 
 	install -dm755 "$pkgdir$config_home/powerlevel10k"
 	mv "$srcdir/powerlevel10k/"* "$pkgdir$config_home/powerlevel10k/"
