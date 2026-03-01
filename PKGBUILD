@@ -33,21 +33,32 @@ package() {
 		echo "Warning: no pandoc, won't install man doc"
 	fi
 
+
 	install -Dm644 "$srcdir/LICENSE.txt" "$pkgdir${prefix}/share/license/${pkgname}/LICENSE.txt"
 
 	# ZDOTDIR in zshenv: $prefix/share/zsh-config
 	local config_home=$prefix/share/zsh-config
 
+
 	# grep hardcoded zshenv path from zsh binary, or default to ${pkgdir}${PREFIX}/etc/zsh/zshenv
 	local zshenvpath="$(strings $(which zsh) | grep -P "(/.*/etc.*/zshenv|/etc.*/zshenv)" | head --lines=1)"
 
-	if [ -z "$zshenvpath" ];then
-		zshenvpath="${pkgdir}${PREFIX}/etc/zsh/zshenv"
+	local ETCDIR
+	if [ -z "${PREFIX}" ] ;then
+		if [ -z "$zshenvpath" ];then
+			ETCDIR="${pkgdir}/etc/zsh/zshenv"
+		else
+			ETCDIR="${pkgdir}$zshenvpath"
+		fi
 	else
-		zshenvpath="${pkgdir}${PREFIX}${zshenvpath}"
+		if [ -z "$zshenvpath" ];then
+			ETCDIR="${pkgdir}${PREFIX}/etc/zsh/zshenv"
+		else
+			ETCDIR="${pkgdir}/$zshenvpath"
+		fi
 	fi
 
-	install -Dm644 "$srcdir/zshenv" "${zshenvpath}"
+	install -Dm644 "$srcdir/zshenv" "${ETCDIR}"
 
 	install -Dm644 "$srcdir/.p10k.zsh" "$pkgdir$config_home/.p10k.zsh"
 	install -Dm644 "$srcdir/.zshrc" "$pkgdir$config_home/.zshrc"
