@@ -2,7 +2,7 @@
 # Maintainer: condexpr01(Vito Devlin) <condexpr01@outlook.com>
 PACKAGER='condexpr01(Vito Devlin) <condexpr01@outlook.com>'
 pkgname=zsh-config
-pkgver=2026.01.20.1
+pkgver=2026.03.02.1
 pkgrel=1
 pkgdesc='zsh&tmux configure'
 arch=('any')
@@ -33,39 +33,46 @@ package() {
 		echo "Warning: no pandoc, won't install man doc"
 	fi
 
-
 	install -Dm644 "$srcdir/LICENSE.txt" "$pkgdir${prefix}/share/license/${pkgname}/LICENSE.txt"
+
+	######################
 
 	# ZDOTDIR in zshenv: $prefix/share/zsh-config
 	local config_home=$prefix/share/zsh-config
 
-
-	# grep hardcoded zshenv path from zsh binary, or default to ${pkgdir}${PREFIX}/etc/zsh/zshenv
-	local zshenvpath="$(strings $(which zsh) | grep -P "(/.*/etc.*/zshenv|/etc.*/zshenv)" | head --lines=1)"
-
-	local ETCDIR
-	if [ -z "${PREFIX}" ] ;then
-		if [ -z "$zshenvpath" ];then
-			ETCDIR="${pkgdir}/etc/zsh/zshenv"
-		else
-			ETCDIR="${pkgdir}$zshenvpath"
-		fi
-	else
-		if [ -z "$zshenvpath" ];then
-			ETCDIR="${pkgdir}${PREFIX}/etc/zsh/zshenv"
-		else
-			ETCDIR="${pkgdir}/$zshenvpath"
-		fi
-	fi
-
-	install -Dm644 "$srcdir/zshenv" "${ETCDIR}"
-
 	install -Dm644 "$srcdir/.p10k.zsh" "$pkgdir$config_home/.p10k.zsh"
 	install -Dm644 "$srcdir/.zshrc" "$pkgdir$config_home/.zshrc"
 
-	install -Dm644 "$srcdir/tmux.conf" "$pkgdir$prefix/../etc/tmux/tmux.conf"
-
 	install -dm755 "$pkgdir$config_home/powerlevel10k"
 	mv "$srcdir/powerlevel10k/"* "$pkgdir$config_home/powerlevel10k/"
+
+	######################
+
+	# not ${prefix}, avoid /usr/etc
+	local etcdir="${pkgdir}${PREFIX}/etc"
+
+	local zshenv_hardcode="$(   strings $(which zsh)  | grep -oP "/etc[^:;]*/zshenv"    | head --lines=1)"
+	local tmux_conf_hardcode="$(strings $(which tmux) | grep -oP "/etc[^:;]*/tmux.conf" | head --lines=1)"
+
+	if [ -z "${zshenv_hardcode}" ];then
+		#predict zshenv path
+		install -Dm644 "$srcdir/zshenv" "${etcdir}/zsh/zshenv"
+	else
+		#zshenv_hardcode
+		install -Dm644 "$srcdir/zshenv" "${pkgdir}${PREFIX}/${zshenv_hardcode}"
+	fi
+
+	if [ -z "${tmux_conf_hardcode}" ];then
+		#predict tmux.conf path
+		install -Dm644 "$srcdir/tmux.conf" "${etcdir}/tmux.conf"
+	else
+		#tmux_conf_hardcode
+		install -Dm644 "$srcdir/tmux.conf" "${pkgdir}${PREFIX}/${tmux_conf_hardcode}"
+	fi
+
 }
+
+
+
+
 
