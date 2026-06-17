@@ -19,6 +19,26 @@ source ${PREFIX:-/usr}/share/zsh-config/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ${PREFIX:-/usr}/share/zsh-config/.p10k.zsh
 [[ ! -f ${PREFIX:-/usr}/share/zsh-config/.p10k.zsh ]] || source ${PREFIX:-/usr}/share/zsh-config/.p10k.zsh
 
+# history
+hist_dir="$HOME/.local/share/zsh"
+hist_file="${hist_dir}/history"
+
+if [[ ! -d "$hist_dir" ]]; then
+	mkdir -p $hist_dir
+fi
+
+if [[ ! -f ${hist_file} ]]; then
+	touch ${hist_file}
+	chmod 600 ${hist_file}
+fi
+
+export HISTFILE="${hist_file}"
+export HISTSIZE=100000
+export SAVEHIST=100000
+
+setopt INC_APPEND_HISTORY #实时增量追加
+setopt SHARE_HISTORY      #多窗口共享
+#setopt HIST_IGNORE_SPACE #无视space开头的命令(保密)
 
 
 # 补全初始化并启动(模糊大小写和连字符)
@@ -105,13 +125,6 @@ function tmux-help() {
 
 	${DIM}---------------------------------------${RESET}"
 }
-
-
-
-
-
-
-
 
 
 
